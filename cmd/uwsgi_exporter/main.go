@@ -71,7 +71,7 @@ func main() {
 		http.Handle("/", landingPage)
 	}
 	http.HandleFunc("/probe", handleProbe(collector.NewMetrics(), logger))
-	http.HandleFunc("/-/healthy", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/-/healthy", func(w http.ResponseWriter, _ *http.Request) {
 		w.WriteHeader(200)
 		io.WriteString(w, "ok")
 	})

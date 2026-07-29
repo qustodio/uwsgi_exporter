@@ -32,7 +32,7 @@ import (
 // Ref: https://issues.k8s.io/89898
 func newDialer() *net.Dialer {
 	dialer := &net.Dialer{
-		Control: func(network, address string, c syscall.RawConn) error {
+		Control: func(_, _ string, c syscall.RawConn) error {
 			return c.Control(func(fd uintptr) {
 				syscall.SetsockoptLinger(int(fd), syscall.SOL_SOCKET, syscall.SO_LINGER, &syscall.Linger{Onoff: 1, Linger: 1}) //nolint:errcheck
 			})

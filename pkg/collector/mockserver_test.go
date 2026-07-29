@@ -64,7 +64,7 @@ func (ls *localServer) teardown() error {
 	if ls.Listener != nil {
 		network := ls.Listener.Addr().Network()
 		address := ls.Listener.Addr().String()
-		ls.Listener.Close()
+		ls.Close()
 		<-ls.done
 		ls.Listener = nil
 		if network == "unix" {
@@ -88,7 +88,7 @@ func newLocalServer(t *testing.T, network string) (*localServer, error) {
 }
 
 func justWriteHandler(content []byte, ch chan<- error) func(*localServer, net.Listener) {
-	return func(ls *localServer, ln net.Listener) {
+	return func(_ *localServer, ln net.Listener) {
 		defer close(ch)
 
 		switch ln := ln.(type) {

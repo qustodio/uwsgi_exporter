@@ -29,7 +29,7 @@ func init() {
 }
 
 func newUwsgiStatsServer(response []byte) *httptest.Server {
-	handlerFunc := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	handlerFunc := http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		header := w.Header()
 		header.Set("Content-Type", "application/json")
 		w.Write(response)

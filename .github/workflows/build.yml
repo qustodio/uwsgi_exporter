@@ -43,13 +43,15 @@ jobs:
             type=sha
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
+            type=raw,latest
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
       - name: Build and push
         uses: docker/build-push-action@v7
         with:
           context: .
-          latest: true
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
