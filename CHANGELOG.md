@@ -1,3 +1,7 @@
+## 1.4.0 / 2026-07-29
+
+* Update dependencies to latest version available. Build with Go 1.26.
+
 ## 1.3.0 / 2023-03-23
 
 ### Major changes

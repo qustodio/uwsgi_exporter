@@ -1,18 +1,10 @@
 # uWSGI Exporter
 
-[![CircleCI](https://circleci.com/gh/timonwong/uwsgi_exporter/tree/master.svg?style=shield)][circleci]
-[![Docker Pulls](https://img.shields.io/docker/pulls/timonwong/uwsgi-exporter.svg?maxAge=604800)][hub]
-[![Go Report Card](https://goreportcard.com/badge/github.com/timonwong/uwsgi_exporter)](https://goreportcard.com/report/github.com/timonwong/uwsgi_exporter)
-
 Prometheus exporter for [uWSGI] metrics.
 
-## Building and running
+A fork from [timonwong/uwsgi_exporter](https://github.com/timonwong/uwsgi_exporter) with updated dependencies.
 
-### Build
-
-```bash
-make
-```
+---
 
 ### Running
 
@@ -76,20 +68,16 @@ using the `--web.config.file` parameter. The format of the file is described
 
 You can deploy this exporter using the Docker image from following registry:
 
-- [DockerHub]\: [timonwong/uwsgi-exporter](https://registry.hub.docker.com/u/timonwong/uwsgi-exporter/)
+- [GHCR]\: [ghcr.io/qustodio/uwsgi_exporter](https://github.com/qustodio/uwsgi_exporter/pkgs/container/uwsgi_exporter)
 
 For example:
 
 ```bash
-docker pull timonwong/uwsgi-exporter
+docker pull ghcr.io/qustodio/uwsgi_exporter
 
-docker run -d -p 9117:9117 timonwong/uwsgi-exporter --stats.uri localhost:8001
+docker run -d -p 9117:9117 ghcr.io/qustodio/uwsgi_exporter --stats.uri localhost:8001
 ```
 
 (uWSGI Stats Server port, 8001 in this example, is configured in `ini` uWSGI configuration files)
 
 [uwsgi]: https://uwsgi-docs.readthedocs.io
-[circleci]: https://circleci.com/gh/timonwong/uwsgi_exporter
-[hub]: https://hub.docker.com/r/timonwong/uwsgi-exporter/
-[travis]: https://travis-ci.org/timonwong/uwsgi_exporter
-[dockerhub]: https://hub.docker.com
